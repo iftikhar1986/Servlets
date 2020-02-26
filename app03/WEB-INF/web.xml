@@ -1,0 +1,28 @@
+<web-app>
+	<servlet>
+	<servlet-name>configServlet</servlet-name>
+		<servlet-class>ConfigServlet</servlet-class>
+		<init-param>
+			<param-name>driverClass</param-name>
+			<param-value>oracle.jdbc.OracleDriver</param-value>
+		</init-param>
+		<init-param>
+			<param-name>url</param-name>
+			<param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+		</init-param>
+		<init-param>
+			<param-name>username</param-name>
+			<param-value>system</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>durga</param-value>
+		</init-param>
+		
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>configServlet</servlet-name>
+		<url-pattern>/config</url-pattern>
+
+	</servlet-mapping>
+</web-app>
