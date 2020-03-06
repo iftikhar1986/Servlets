@@ -1,0 +1,39 @@
+package com.soft.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		
+		String uname = request.getParameter("uname");
+		String upwd = request.getParameter("upwd");
+		
+		out.println("<html><body>");
+		out.println("<h2 style='color:red;' align='center'>Soft Solutions</h2>");
+		out.println("<h3 style='color:blue;' align='center'>User Login Status</h2>");
+		out.println("<h1 style='color:blue;' align='center'>");
+		if (uname.equals("durga") && upwd.equals("durga")) {
+			out.println("User Login Success");
+		}else {
+			out.println("User Login failure");
+		}
+		
+		out.println("</h1>");
+		out.println("<h3 align='center'>");
+		out.println("<a href='./loginform.html'>|User Login Page|</a>");
+		out.println("</h3></body></html>");
+	}
+
+}
