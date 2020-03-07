@@ -16,13 +16,20 @@ public class RedirectServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
+		response.sendRedirect("http://localhost:1010/vodafoneapp/welcome.html");
+		
+		/*
+		response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+		response.setHeader("location", "http://localhost:1010/vodafoneapp/welcome.html");
+		*/
+		/*
 		out.println("<html><body>");
 		out.println("<h3 align='center'>");
 		out.println("To get Services from Hutch<br>");
 		out.println("Click on<br>");
 		out.println("<a href='http://localhost:1010/vodafoneapp/welcome.html'>|CC@vodafone.com|</a>");
 		out.println("</h3></body></html>");
-
+		*/
 
 	}
 
