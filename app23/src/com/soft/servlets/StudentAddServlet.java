@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.soft.beans.Student;
+import com.soft.factory.StudentServiceFactory;
 import com.soft.service.StudentService;
+import com.soft.service.StudentServiceImpl;
 
 @WebServlet("/add")
 public class StudentAddServlet extends HttpServlet {
@@ -31,7 +33,7 @@ public class StudentAddServlet extends HttpServlet {
 		std.setSname(sname);
 		std.setSaddr(saddr);
 		
-		StudentService stdService = new StudentService();
+		StudentService stdService = StudentServiceFactory.getStudentService();
 		stdService.addStudent(std);
 		
 		
