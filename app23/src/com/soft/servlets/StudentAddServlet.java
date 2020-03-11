@@ -12,13 +12,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.soft.beans.Student;
+import com.soft.factory.ConnectionFactory;
 import com.soft.factory.StudentServiceFactory;
 import com.soft.service.StudentService;
-import com.soft.service.StudentServiceImpl;
 
-@WebServlet("/add")
+@WebServlet(urlPatterns = {"/add"},loadOnStartup = 1)
 public class StudentAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@Override
+	public void init() throws ServletException {
+		try {
+			Class.forName("com.soft.factory.ConnectionFactory");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -57,15 +67,13 @@ public class StudentAddServlet extends HttpServlet {
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/std_add_form.html");
 		requestDispatcher.include(request, response);
+	
+	}
+	
+	private void destory() {
 		
-		
+		ConnectionFactory.cleanUp();
 
-
-		
-		
-		
-		
-		
 	}
 
 }
